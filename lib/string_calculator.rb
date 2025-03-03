@@ -9,10 +9,20 @@ class StringCalculator
   def add
     return 0 if string.empty?
 
+    check_for_negatives
+
     digits.sum
   end
 
   private
+
+  def check_for_negatives
+    raise "Negatives not allowed #{negatives.join(', ')}" if negatives.size.positive?
+  end
+
+  def negatives
+    digits.select(&:negative?)
+  end
 
   def digits
     string.gsub('\n', delimiter).split(delimiter).map(&:to_i)

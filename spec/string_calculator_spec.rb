@@ -131,4 +131,24 @@ RSpec.describe StringCalculator do
       it { is_expected.to eq(27) }
     end
   end
+
+  describe '#string with negative numbers' do
+    context 'when string is //;\n1;-2;3' do
+      let(:string) { '//;\n1;-2;3' }
+
+      it { expect { subject }.to raise_error('Negatives not allowed -2') }
+    end
+
+    context 'when string is //#\n2#-5\n4#-6' do
+      let(:string) { '//#\n2#-5\n4#-6' }
+
+      it { expect { subject }.to raise_error('Negatives not allowed -5, -6') }
+    end
+
+    context 'when string is //@\n-3@-8@-7\n-9' do
+      let(:string) { '//@\n-3@-8@-7\n-9' }
+
+      it { expect { subject }.to raise_error('Negatives not allowed -3, -8, -7, -9') }
+    end
+  end
 end
