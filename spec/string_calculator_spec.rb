@@ -39,4 +39,24 @@ RSpec.describe StringCalculator do
       it { is_expected.to eq(3) }
     end
   end
+
+  describe '#double digit string' do
+    context 'when string is 1,2' do
+      let(:string) { '1,2' }
+
+      it { is_expected.to eq(3) }
+    end
+
+    context 'when string is 2,5' do
+      let(:string) { '2,5' }
+
+      it { is_expected.to eq(7) }
+    end
+
+    context 'when string is 3,8' do
+      let(:string) { '3,8' }
+
+      it { is_expected.to eq(11) }
+    end
+  end
 end
