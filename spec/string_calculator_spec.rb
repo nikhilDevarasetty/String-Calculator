@@ -151,4 +151,24 @@ RSpec.describe StringCalculator do
       it { expect { subject }.to raise_error('Negatives not allowed -3, -8, -7, -9') }
     end
   end
+
+  describe '#string with numbers > 1000' do
+    context 'when string is 1001\n2,3' do
+      let(:string) { '1001\n2,3' }
+
+      it { is_expected.to eq(5) }
+    end
+
+    context 'when string is 2,5000\n4,6' do
+      let(:string) { '2,5000\n4,6' }
+
+      it { is_expected.to eq(12) }
+    end
+
+    context 'when string is 3,8000,7\n9' do
+      let(:string) { '3,8000,7\n9' }
+
+      it { is_expected.to eq(19) }
+    end
+  end
 end

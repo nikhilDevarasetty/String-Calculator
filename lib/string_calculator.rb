@@ -25,7 +25,7 @@ class StringCalculator
   end
 
   def digits
-    string.gsub('\n', delimiter).split(delimiter).map(&:to_i)
+    string.gsub('\n', delimiter).split(delimiter).map(&:to_i).select { |num| num <= 1000 }
   end
 
   def delimiter
