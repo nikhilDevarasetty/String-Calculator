@@ -13,6 +13,6 @@ class StringCalculator
   end
 
   def digits
-    str.split(',').map(&:to_i)
+    str.gsub('\n', ',').split(',').map(&:to_i)
   end
 end
