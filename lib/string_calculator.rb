@@ -1,4 +1,4 @@
-# string calculator class to add digits in string
+# string calculator class to add numbers in string
 class StringCalculator
   attr_reader :str
 
@@ -9,23 +9,23 @@ class StringCalculator
   def add
     return 0 if string.empty?
 
-    check_for_negatives
+    check_for_negative_numbers
 
-    digits.sum
+    numbers.sum
   end
 
   private
 
-  def check_for_negatives
-    raise "Negatives not allowed #{negatives.join(', ')}" if negatives.size.positive?
+  def check_for_negative_numbers
+    raise "Negatives not allowed #{negative_numbers.join(', ')}" if negative_numbers.size.positive?
   end
 
-  def negatives
-    digits.select(&:negative?)
+  def negative_numbers
+    numbers.select(&:negative?)
   end
 
-  def digits
-    string.gsub('\n', delimiter).split(delimiter).map(&:to_i).select { |num| num <= 1000 }
+  def numbers
+    @numbers ||= string.gsub('\n', delimiter).split(delimiter).map(&:to_i).select { |num| num <= 1000 }
   end
 
   def delimiter
