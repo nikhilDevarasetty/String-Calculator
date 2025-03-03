@@ -29,10 +29,18 @@ class StringCalculator
   end
 
   def delimiter
-    @delimiter ||= str[0..1] == '//' ? str[2] : ','
+    @delimiter ||= str[0..1] == '//' ? str[delimiter_start_index..delimiter_end_index] : ','
   end
 
   def string
-    @string ||= str[0..1] == '//' ? str[3..] : str
+    @string ||= str[0..1] == '//' ? str[(delimiter_end_index + 1)..] : str
+  end
+
+  def delimiter_start_index
+    2
+  end
+
+  def delimiter_end_index
+    @delimiter_end_index ||= str.index('\n').to_i - 1
   end
 end
