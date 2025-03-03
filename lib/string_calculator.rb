@@ -1,11 +1,18 @@
 # string calculator class to add digits in string
 class StringCalculator
-  def self.add(string)
-    return 0 if string.strip.empty?
+  attr_reader :str
 
-    digits = string.split(',').map(&:to_i)
-    return digits[0] if digits.length == 1
+  def initialize(str)
+    @str = str.strip
+  end
 
-    digits[0] + digits[1]
+  def add
+    return 0 if str.empty?
+
+    digits.sum
+  end
+
+  def digits
+    str.split(',').map(&:to_i)
   end
 end
