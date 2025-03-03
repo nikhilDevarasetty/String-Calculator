@@ -7,12 +7,22 @@ class StringCalculator
   end
 
   def add
-    return 0 if str.empty?
+    return 0 if string.empty?
 
     digits.sum
   end
 
+  private
+
   def digits
-    str.gsub('\n', ',').split(',').map(&:to_i)
+    string.gsub('\n', delimiter).split(delimiter).map(&:to_i)
+  end
+
+  def delimiter
+    @delimiter ||= str[0..1] == '//' ? str[2] : ','
+  end
+
+  def string
+    @string ||= str[0..1] == '//' ? str[3..] : str
   end
 end

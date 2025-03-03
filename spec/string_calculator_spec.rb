@@ -99,4 +99,36 @@ RSpec.describe StringCalculator do
       it { is_expected.to eq(27) }
     end
   end
+
+  describe '#string with different delimiters' do
+    context 'when string is //$\n' do
+      let(:string) { '//$\n' }
+
+      it { is_expected.to eq(0) }
+    end
+
+    context 'when string is //$\n5' do
+      let(:string) { '//$\n5' }
+
+      it { is_expected.to eq(5) }
+    end
+
+    context 'when string is //;\n1;2;3' do
+      let(:string) { '//;\n1;2;3' }
+
+      it { is_expected.to eq(6) }
+    end
+
+    context 'when string is //#\n2#5\n4#6' do
+      let(:string) { '//#\n2#5\n4#6' }
+
+      it { is_expected.to eq(17) }
+    end
+
+    context 'when string is //@\n3@8@7\n9' do
+      let(:string) { '//@\n3@8@7\n9' }
+
+      it { is_expected.to eq(27) }
+    end
+  end
 end
